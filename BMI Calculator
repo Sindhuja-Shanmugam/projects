@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Simple BMI calculator</title>
+</head>
+<body>
+<h1>BMI calculation</h1>
+<form>
+<br><label>Enter your weight:</label>
+<input type="text" id="weight">
+<br><br><label>Enter your height:</label>
+<input type="text" id="height">
+<br><br><textarea cols='25' rows='3' id='show' readonly></textarea>
+<br><br><button id='calc' onclick='calculationBMI(event)' value="BMI1">CALCULATE</button>
+<button type="reset" id="reset" value="reset" onclick="resetTextarea()">RESET</button>
+</form>
+<script>
+function calculationBMI(event){
+	event.preventDefault();
+	var hei=document.getElementById('height').value/100;
+	var wei=document.getElementById('weight').value;
+	var calBMI=wei/(hei*hei);
+	alert(calBMI);
+	if(calBMI==NaN && calBMI=='0'){
+		document.getElementById("show").innerHTMl="Enter a vaild number";
+	}
+	else if(calBMI>=2 && calBMI<=10){
+		document.getElementById("show").innerHTML="strictly underweight";
+	}
+	else if(calBMI>=11 && calBMI<=19){
+		document.getElementById("show").innerHTML="Slightly under weight";
+	}
+	else if(calBMI>=20 && calBMI<=25){
+		document.getElementById("show").innerHTML="Normal  weight";
+	}
+	else if(calBMI>=26 && calBMI<=35){
+		documnet.getElementById("show").innerHTML="Obse";
+	}
+	else if(calBMI>=36 && calBMI<=45){
+		document.getElementById("show").innerHTML="More Obse";
+	}
+	else{
+		document.getElementById("show").innerHTML="Death";
+	}
+	document.getElementById("BMI1").innerHTML="calBMI";
+}
+function resetTextarea(){
+	document.getElementById('show').value=" ";
+}
+</script>
+</body>
+</html>
